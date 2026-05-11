@@ -1,95 +1,95 @@
 # 🚀 KlikQRIS Adapter
 
-A premium, modular, and framework-agnostic adapter for integrating **KlikQRIS** payment gateway into any JavaScript/TypeScript application.
+Adapter premium, modular, dan framework-agnostic untuk mengintegrasikan payment gateway **KlikQRIS** ke dalam aplikasi JavaScript/TypeScript apa pun.
 
 ![KlikQRIS Payment Preview](./qris-direct-payment.webp)
 
-This adapter decouples the core payment logic from specific frameworks, allowing you to use it in Next.js, Express, NestJS, or even vanilla Node.js environments.
+Adapter ini memisahkan logika pembayaran inti dari framework tertentu, memungkinkan Anda menggunakannya di Next.js, Express, NestJS, atau bahkan lingkungan Node.js murni.
 
 ---
 
-## ✨ Features
+## ✨ Fitur
 
-- **Framework Agnostic**: Pure TypeScript client that works anywhere.
-- **Easy Integration**: Simple API for creating transactions and verifying signatures.
-- **Next.js Ready**: Includes pre-built API routes and UI components for rapid deployment.
-- **Type Safe**: Full TypeScript support with detailed interfaces for requests and responses.
-- **Beautiful UI**: Includes a premium `QRISPoster` component for a professional payment experience.
+- **Framework Agnostic**: Client TypeScript murni yang dapat berjalan di mana saja.
+- **Integrasi Mudah**: API sederhana untuk membuat transaksi dan memverifikasi tanda tangan (signature).
+- **Next.js Ready**: Termasuk rute API dan komponen UI siap pakai untuk deployment cepat.
+- **Type Safe**: Dukungan penuh TypeScript dengan interface detail untuk request dan response.
+- **UI Menawan**: Termasuk komponen premium `QRISPoster` untuk pengalaman pembayaran yang profesional.
 
 ---
 
-## 🛠️ Installation
+## 🛠️ Instalasi
 
-1. **Clone or copy** the files into your project.
-2. **Install dependencies**:
+1. **Clone atau salin** file ke dalam proyek Anda.
+2. **Instal dependensi**:
    ```bash
    npm install axios
    ```
 
 ---
 
-## ⚙️ Configuration
+## ⚙️ Konfigurasi
 
-Add the following environment variables to your `.env` file:
+Tambahkan variabel lingkungan (environment variables) berikut ke file `.env` Anda:
 
 ```env
-KLIKQRIS_API_KEY=your_api_key_here
-KLIKQRIS_MERCHANT_ID=your_merchant_id_here
+KLIKQRIS_API_KEY=api_key_anda_di_sini
+KLIKQRIS_MERCHANT_ID=merchant_id_anda_di_sini
 ```
 
 ---
 
-## 🚀 Quick Start (Core Adapter)
+## 🚀 Memulai Cepat (Core Adapter)
 
 ```typescript
 import { klikQris } from './lib/klikqris/adapter';
 
-// Create a transaction
+// Buat transaksi
 const result = await klikQris.createTransaction({
   orderId: 'ORDER-123',
   amount: 50000,
-  description: 'Premium Subscription'
+  description: 'Langganan Premium'
 });
 
 if (result.status) {
-  console.log('QRIS URL:', result.data.qris_url);
+  console.log('URL QRIS:', result.data.qris_url);
 }
 ```
 
 ---
 
-## 📂 Project Structure
+## 📂 Struktur Proyek
 
-- `lib/klikqris/`: The core framework-agnostic client.
-  - `adapter.ts`: The main `KlikQrisClient` class.
-  - `types.ts`: TypeScript interfaces for the API.
-- `api/klikqris/`: **Example** Next.js App Router implementation.
-  - `route.ts`: Creation endpoint.
-  - `status/`: Payment status polling.
-  - `webhook/`: Automated payment verification and activation.
-- `component/ui/klikqris/`: **Example** UI components.
-  - `QRISPoster.tsx`: A professional QRIS display component.
+- `lib/klikqris/`: Client inti yang independen dari framework.
+  - `adapter.ts`: Class utama `KlikQrisClient`.
+  - `types.ts`: Interface TypeScript untuk API.
+- `api/klikqris/`: **Contoh** implementasi Next.js App Router.
+  - `route.ts`: Endpoint pembuatan transaksi.
+  - `status/`: Polling status pembayaran.
+  - `webhook/`: Verifikasi dan aktivasi pembayaran otomatis.
+- `component/ui/klikqris/`: **Contoh** komponen UI.
+  - `QRISPoster.tsx`: Komponen tampilan QRIS profesional.
 
 ---
 
-## 🖥️ Next.js Implementation
+## 🖥️ Implementasi Next.js
 
-If you are using Next.js, you can simply move the `api` and `component` folders into your `src` or root directory.
+Jika Anda menggunakan Next.js, Anda cukup memindahkan folder `api` dan `component` ke direktori `src` atau root proyek Anda.
 
-### UI Usage:
+### Penggunaan UI:
 
 ```tsx
 import QRISPoster from '@/component/ui/klikqris/QRISPoster';
 
-// In your payment page
+// Di halaman pembayaran Anda
 <QRISPoster 
   qrisUrl={paymentData.qrisUrl} 
-  merchantName="YOUR BUSINESS"
+  merchantName="NAMA BISNIS ANDA"
 />
 ```
 
 ---
 
-## 🛡️ License
+## 🛡️ Lisensi
 
 MIT

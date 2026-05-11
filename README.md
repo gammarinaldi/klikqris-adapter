@@ -2,6 +2,8 @@
 
 A premium, modular, and framework-agnostic adapter for integrating **KlikQRIS** payment gateway into any JavaScript/TypeScript application.
 
+![KlikQRIS Payment Preview](./qris-direct-payment.webp)
+
 This adapter decouples the core payment logic from specific frameworks, allowing you to use it in Next.js, Express, NestJS, or even vanilla Node.js environments.
 
 ---
